@@ -7,7 +7,7 @@ do
 done
 
 # If running the rails server then create or migrate existing database
-if [[ "${*}" == *"rails s -p 3000"* ]]; then
+if [[ "${*}" == *"rails s -p 4000"* ]]; then
   ./bin/rails db:create
   ./bin/rails db:prepare
 fi
