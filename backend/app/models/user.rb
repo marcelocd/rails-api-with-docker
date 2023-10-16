@@ -1,13 +1,14 @@
 class User < ApplicationRecord
+  include Devise::JWT::RevocationStrategies::JTIMatcher
   include Email
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable,
          :registerable,
-         :recoverable,
-         :rememberable,
-         :validatable
+         :validatable,
+         :jwt_authenticatable,
+         jwt_revocation_strategy: self
 
   USERNAME_REGEXP     = /\A[a-zA-Z0-9_.]+\z/
   MIN_USERNAME_LENGTH = 5
