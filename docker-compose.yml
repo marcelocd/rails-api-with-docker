@@ -32,6 +32,7 @@ services:
       - .env
     networks:
       - my-app-network
+    restart: on-failure
 
   backend:
     depends_on:
@@ -48,6 +49,7 @@ services:
       - .env
     networks:
       - my-app-network
+    restart: on-failure
 
 networks:
   my-app-network:

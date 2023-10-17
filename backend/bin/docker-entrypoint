@@ -1,11 +1,5 @@
 #!/bin/bash -e
 
-until echo > /dev/tcp/postgres/54321
-do
-  echo "Waiting for PostgreSQL to start..."
-  sleep 1
-done
-
 # If running the rails server then create or migrate existing database
 if [[ "${*}" == *"rails s -p 4000"* ]]; then
   ./bin/rails db:create
