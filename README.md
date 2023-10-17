@@ -75,7 +75,7 @@ or _(if you want to login with the username)_
 
 Log out by sending a **DELETE** request to **`http://localhost:4000/logout`** with the user's authentication token.
 
-The authentication token can be found in the "authorization" header received as a response from sucessfull signup or login requests
+The authentication token can be found in the "authorization" header received as a response from sucessfull signup or login requests.
 
 ## Running Specs
 
