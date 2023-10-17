@@ -42,7 +42,7 @@ Create a new user by sending a **POST** request to **`http://localhost:4000/sign
   "user": {
     "username": "marcelo",
     "email": "marcelo@gmail.com",
-    "password": "password123",
+    "password": "password123"
   }
 }
 ```
@@ -55,7 +55,7 @@ Authenticate by sending a **POST** request to **`http://localhost:4000/login`** 
 {
   "user": {
     "email": "marcelo@gmail.com",
-    "password": "password123",
+    "password": "password123"
   }
 }
 ```
@@ -66,7 +66,7 @@ or _(if you want to login with the username)_
 {
   "user": {
     "email": "marcelo",
-    "password": "password123",
+    "password": "password123"
   }
 }
 ```
