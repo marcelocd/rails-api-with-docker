@@ -11,6 +11,28 @@ services:
     networks:
       - my-app-network
 
+  redis:
+    image: redis:7.2.1-alpine
+    command: redis-server
+    volumes:
+      - ./redis:/data
+    networks:
+      - my-app-network
+
+  sidekiq:
+    depends_on:
+      - postgres
+      - redis
+    build: ./backend
+    command: bundle exec sidekiq
+    volumes:
+      - ./backend:/rails
+      - /rails/tmp
+    env_file:
+      - .env
+    networks:
+      - my-app-network
+
   backend:
     depends_on:
       - postgres

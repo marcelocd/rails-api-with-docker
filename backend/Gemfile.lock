@@ -165,6 +165,7 @@ GEM
     nokogiri (1.15.4-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (6.1.0)
     pg (1.5.4)
     pry (0.14.2)
       coderay (~> 1.1)
@@ -224,6 +225,8 @@ GEM
     rake (13.0.6)
     rdoc (6.5.0)
       psych (>= 4.0.0)
+    redis-client (0.17.0)
+      connection_pool
     regexp_parser (2.8.2)
     reline (0.3.9)
       io-console (~> 0.5)
@@ -256,6 +259,11 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
+    sidekiq (7.1.6)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.14.0)
     stringio (3.0.8)
     thor (1.2.2)
     timeout (0.4.0)
@@ -293,6 +301,7 @@ DEPENDENCIES
   factory_bot_rails
   faker (~> 3.2, >= 3.2.1)
   jsonapi-serializer
+  pagy
   pg (~> 1.1)
   pry-byebug
   puma (>= 5.0)
@@ -302,6 +311,7 @@ DEPENDENCIES
   rspec-rails (~> 6.0, >= 6.0.3)
   selenium-webdriver
   shoulda-matchers (~> 5.3)
+  sidekiq (~> 7.1, >= 7.1.6)
   tzinfo-data
   webdrivers
 
