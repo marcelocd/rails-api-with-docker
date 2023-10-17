@@ -1,6 +1,6 @@
 # Rails API with Docker
 
-Rails API with Docker is a streamlined template designed to kickstart your API development process using Ruby on Rails 7.1 and Ruby 3.2.2 in conjunction with essential tools like Devise, Devise-JWT, JSONAPI::Serializer, Docker, Docker Compose, PostgreSQL, Redis and Sidekiq. By utilizing this template, you can swiftly set up a robust Rails API environment without the hassle of manual configurations.
+Rails API with Docker is a streamlined template designed to kickstart your API development process using Ruby on Rails 7.1 and Ruby 3.2.2 in conjunction with essential tools like Devise, Devise-JWT, JSONAPI::Serializer, Docker, Docker Compose, PostgreSQL, Redis, Sidekiq, Pagy and Rspec. By utilizing this template, you can swiftly set up a robust Rails API environment without the hassle of manual configurations.
 
 ## Prerequisites
 
@@ -100,6 +100,8 @@ bundle exec rspec -fd
 - **Devise and Devise-JWT**: Implement authentication for your API.
 
 - **JSONAPI::Serializer**: Serialize your API responses following the JSON API specification.
+
+- **Pagy**: A fast and lightweight pagination gem for Rails.
 
 - **RSpec with Shoulda-Matchers**: Conduct thorough and readable testing with RSpec's behavior-driven development framework.
 
