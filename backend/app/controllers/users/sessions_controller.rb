@@ -5,7 +5,7 @@ class Users::SessionsController < Devise::SessionsController
 
   respond_to :json
 
-  # before_action :configure_sign_in_params, only: [:create]
+  before_action :configure_sign_in_params, only: :create
 
   # GET /resource/sign_in
   # def new
@@ -22,18 +22,18 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_in_params
-  #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
-  # end
+  def configure_sign_in_params
+    devise_parameter_sanitizer.permit(:sign_in, keys: %i[email username])
+  end
 
   private
 
   def respond_with(resource, _opts = {})
     render json: {
-      status: { code: 200, message: 'Logged in sucessfully.' },
+      status: { code: 200, message: I18n.t('devise.sessions.logged_in') },
       data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
     }, status: :ok
   end
@@ -42,12 +42,12 @@ class Users::SessionsController < Devise::SessionsController
     if current_user
       render json: {
         status: 200,
-        message: 'Logged out successfully.'
+        message: I18n.t('devise.sessions.logged_out')
       }, status: :ok
     else
       render json: {
         status: 401,
-        message: "Couldn't find an active session."
+        message: I18n.t('devise.failure.no_active_session')
       }, status: :unauthorized
     end
   end

@@ -5,7 +5,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   respond_to :json
 
-  # before_action :configure_sign_up_params, only: [:create]
+  before_action :configure_sign_up_params, only: :create
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
@@ -42,12 +42,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+  protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username])
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params
@@ -69,16 +69,25 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def respond_with(resource, _opts = {})
     if request.method == 'POST' && resource.persisted?
       render json: {
-        status: { code: 200, message: 'Signed up sucessfully.' },
+        status: {
+          code: 200,
+          message: I18n.t('devise.registrations.signed_up')
+        },
         data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }, status: :ok
     elsif request.method == 'DELETE'
       render json: {
-        status: { code: 200, message: 'Account deleted successfully.' }
+        status: {
+          code: 200,
+          message: I18n.t('devise.registrations.destroyed')
+        }
       }, status: :ok
     else
       render json: {
-        status: { code: 422, message: "User couldn't be created successfully. #{resource.errors.full_messages.to_sentence}" }
+        status: {
+          code: 422,
+          message: I18n.t('devise.failure.could_not_signup', errors: resource.errors.full_messages.to_sentence)
+        }
       }, status: :unprocessable_entity
     end
   end
